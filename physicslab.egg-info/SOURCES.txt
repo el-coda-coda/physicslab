@@ -1,9 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-physicslab/__init__.py
-physicslab/interpolation.py
-physicslab.egg-info/PKG-INFO
-physicslab.egg-info/SOURCES.txt
-physicslab.egg-info/dependency_links.txt
-physicslab.egg-info/top_level.txt

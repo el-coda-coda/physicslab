@@ -1,5 +1,5 @@
 Metadata-Version: 2.4
-Name: physicslab
+Name: physicslab-coda
 Version: 0.1.0
 Summary: This library contains the code usefull in physics lab
 Author-email: Andrea Codarin <codarin.andreawork@gmail.com>
@@ -7,6 +7,7 @@ License: MIT
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: numpy
 Dynamic: license-file
 
 # physicslab

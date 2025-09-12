@@ -1,0 +1,8 @@
+LICENSE
+README.md
+pyproject.toml
+physicslab_coda.egg-info/PKG-INFO
+physicslab_coda.egg-info/SOURCES.txt
+physicslab_coda.egg-info/dependency_links.txt
+physicslab_coda.egg-info/requires.txt
+physicslab_coda.egg-info/top_level.txt
