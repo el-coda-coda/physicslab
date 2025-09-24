@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "physicslab-coda"
-version = "0.2.0"
+version = "0.2.1"
 description = "This library contains the code usefull in physics lab"
 authors = [
     { name="Andrea Codarin", email="codarin.andreawork@gmail.com" }

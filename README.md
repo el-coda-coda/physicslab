@@ -30,35 +30,61 @@ Class for linear interpolation with experimental uncertainties.
 Class for calculating basic statistical variables.
 
 - `r(x, y)`  
-  Computes the sample correlation coefficient.
+  Computes the sample correlation coefficient.  
+  **Output:** `r` (sample correlation coefficient)
+
+- `mean(x)`  
+  Computes the mean of a data set.  
+  **Output:** `mean` (data set mean)
+
+- `var(x, sample=True)`  
+  Computes the sample variance of a data set.  
+  **Output:** `var` (data set variance)
+
+- `sdev(x, sample=True)`  
+  Computes the sample standard deviation of a data set.  
+  **Output:** `sdev` (data set standard deviation)
+
+- `post_var(f, parameters, x, y)`  
+  Computes the posterior variance of a data set.  
+  **Output:** `pv` (data set posterior variance)
+
+- `cov(x, y, sample=True)`  
+  Computes the sample covariance of a data set.  
+  **Output:** `cov` (data set covariance)
 
 ---
 
 ### `StatisticalTests`
 Class for applying common statistical tests.
 
-- `chi2(parameters, y_original, y_calculated, erry)`  
-  Compute **chi-squared**.
+- `chi_sqrd(f, parameters, x, y, erry)`  
+  Compute **chi-squared**.  
+  **Output:** `chi2` (chi-squared value), `df` (degrees of freedom)
 
-- `reduced_chi2(parameters, y_original, y_calculated, erry)`  
-  Compute **reduced chi-squared**.
+- `reduced_chi_sqrd(f, parameters, x, y, erry)`  
+  Compute **reduced chi-squared**.  
+  **Output:** `reduced_chi2` (reduced chi-squared value), `df` (degrees of freedom)
 
-- `post_error(parameters, y_original, y_calculated)`  
-  Compute **posterior error**.
+- `post_error(f, parameters, x, y)`  
+  Compute **posterior error**.  
+  **Output:** `pe` (posterior error), `df` (degrees of freedom)
 
 - `r_t_student(x, y)`  
-  Compute Student’s t-value for correlation.
+  Compute Student’s t-value for correlation.  
+  **Output:** `t` (t-value), `df` (degrees of freedom)
 
-- `t_student(mean, stddev, n, mu)`  
-  Compute Student’s t-value for a sample.
+- `t_student(x, mu)`  
+  Compute Student’s t-value for a sample mean.  
+  **Output:** `t` (t-value), `df` (degrees of freedom)
 
-- `f_test(var1, var2, n1, n2)`  
-  Perform **F-test** to compare two variances.
+- `alternative_f_test(f_0, f_a, v_0, v_a, x, y)`  
+  Perform **F-test** to compare two models.  
+  **Output:** `f_test` (F-test value), `df1`, `df2` (degrees of freedom)
 
-- `double_var_t_student(mean1, mean2, var1, var2, n1, n2)`  
-  Student’s t-test for two samples with different variances.
-
----
+- `t_student_comp(x, y)`  
+  Student’s t-test for two samples with different variances.  
+  **Output:** `t` (t-value), `df` (degrees of freedom)
 
 ---
 
@@ -90,13 +116,14 @@ a, b, s_a, s_b = interp.linear_interpolation(x, y, errx, erry, verbose=True)
 print("a =", a, " b =", b, " σa =", s_a, " σb =", s_b)
 
 # Correlation coefficient
-r = StatisticalVariables.r(x, y)
+stat_vars = StatisticalVariables()
+r = stat_vars.r(x, y)
 print("r =", r)
 
 # Reduced chi-squared
 tests = StatisticalTests()
 y_fit = a + b*x
-rchi2, df = tests.reduced_chi2(parameters=2, y_original=y, y_calculated=y_fit, erry=erry)
+rchi2, df = tests.reduced_chi_sqrd(lambda x: a + b*x, parameters=2, x=x, y=y, erry=erry)
 print("Reduced χ² =", rchi2, " with degrees of freedom =", df)
 ```
 
